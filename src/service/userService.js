@@ -15,4 +15,6 @@ userService.insertData = async (data) => {
     }
 };
 
+
+
 module.exports = userService;

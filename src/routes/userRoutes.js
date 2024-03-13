@@ -4,9 +4,11 @@ const userService = require('../service/userService');
 
 
 router.post('/register', async (req, res, next) => {
+    console.log("call");
     try {
-        const { name, email } = req.body;
-        let adduser = await userService.insertData({ name, email});
+        const { firstName,lastName, email, password, mobileNumber,role } = req.body;
+        let adduser = await userService.insertData({ firstName,lastName, email, password, mobileNumber,role});
+        
 
         if (adduser)
             res.json({ 'message': "Successfully added" });
