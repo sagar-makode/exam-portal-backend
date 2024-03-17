@@ -73,6 +73,64 @@ userModel.checkteacherlogin = async (email, password) => {
     }
 };
 
+userModel.findUser = async (id) => {
+    try {
+        // Retrieve user data by email
+        let studentModel = await dbmodel.getStudentSchema();
+        let student = await studentModel.findOne({ _id: id })
+        if (student) {
+            user = student.toObject(); // Convert Mongoose document to plain JavaScript object
+            user.role = 'student';
+            console.log(user,"1");
+            return user
+        }
 
+        let teacherModel = await dbmodel.getTeacherSchema();
+        let teacher = await teacherModel.findOne({  _id: id })
+        if (teacher) {
+            user = teacher.toObject(); // Convert Mongoose document to plain JavaScript object
+            user.role = 'teacher';
+            console.log(user,"2");
+            return user
+        }
+        
+            return  "UserNot Found" 
+        
+
+    } catch (error) {
+        // If any error occurs, rethrow it
+        throw error;
+    }
+};
+
+
+
+
+userModel.inserTestData = async (data) => {
+    try {
+      
+            let testData = await dbmodel.gettestSchema();
+            await testData.create(data);
+            return data  
+       
+
+    } catch (error) {
+        throw new Error("Error in inserting form data: " + error.message);
+    }
+};
+
+
+userModel.findTestData = async () => {
+    try {
+      
+            let findtestData = await dbmodel.gettestSchema();
+            let data = await findtestData.find();
+            return data
+       
+
+    } catch (error) {
+        throw new Error("Error in inserting form data: " + error.message);
+    }
+};
 
 module.exports = userModel;
