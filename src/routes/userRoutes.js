@@ -8,8 +8,9 @@ const verifyJWT  = require('../midalware/auth.midalware');
 router.post('/register', async (req, res, next) => {
    
     try {
-        const { firstName,lastName, email, password, mobileNumber,role } = req.body;
-        let adduser = await userService.insertData({ firstName,lastName, email, password, mobileNumber,role});
+        const { name, email, password, mobileNumber,role } = req.body;
+      
+        let adduser = await userService.insertData({name, email, password, mobileNumber,role});
         
 
         if (adduser)
@@ -45,7 +46,7 @@ router.post('/studentlogin', async (req, res, next) => {
     return res
     .status(200)
     .cookie("token", token, options)
-    .json( {token, user} )
+    .json({ token, message: "User logged in successfully"} )
       
       
     } catch (error) {

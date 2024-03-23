@@ -5,16 +5,14 @@ const url = "mongodb://localhost:27017/exam-portal"
 
 
 const teacherSchema = Schema({  
-    firstName: String,
-    lastName: String,
+    name: String,
     email: String, 
     password: String,
     mobileNumber: Number,
 }, { versionKey: false });
 
 const studentSchema = Schema({  
-    firstName: String,
-    lastName: String,
+    name: String,
     email: String, 
     password: String,
     mobileNumber: Number,
