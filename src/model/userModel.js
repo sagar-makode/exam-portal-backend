@@ -133,4 +133,31 @@ userModel.findTestData = async () => {
     }
 };
 
+
+userModel.insertexamdata = async (insdata) => {
+    try {
+        let findtestData = await dbmodel.gettestSchema();
+        const test = await findtestData.findById(insdata.testId);
+        // console.log(test);
+        // test.submitedBy.push({
+        //     userAnswers: insdata.userAnswers,
+        //     totalQuestions: insdata.totalQuestions,
+        //     correctAnswers: insdata.correctAnswers,
+        //     totalMarks: insdata.totalMarks,
+        //     obtainedMark: insdata.obtainedMark,
+        //     passStatus: insdata.passStatus,
+        //     testName: insdata.testName,
+        //     name: insdata.name,
+        //     submitterId: insdata.submitterId
+        // });
+
+
+
+    } catch (error) {
+        throw new Error("Error in inserting form data: " + error.message);
+    }
+};
+
+
+
 module.exports = userModel;

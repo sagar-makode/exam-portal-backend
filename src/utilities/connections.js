@@ -26,7 +26,8 @@ const testSchema = Schema({
     category : String,
     questions: Array,
     totalMarks: Number,
-    correctAnswers: Array
+    correctAnswers: Array,
+    submitedBy: Array
 }, { versionKey: false });
 
 const collection = {};

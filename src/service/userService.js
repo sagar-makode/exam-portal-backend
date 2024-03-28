@@ -82,6 +82,19 @@ userService.testData = async () => {
     }
 };
 
+userService.inserExamtData = async (data) => {
+    try {
+        let insertexamdata = await dbservice.insertexamdata(data);
+        if (insertexamdata) {
+            return insertexamdata;
+        } else {
+            return "";
+        }
+    } catch (error) {
+        throw new Error("Error in inserting data: " + error.message);
+    }
+};
+
 
 
 

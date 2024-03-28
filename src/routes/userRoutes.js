@@ -127,4 +127,20 @@ router.get("/tests",async(req, res, next)=>{
 })
 
 
+router.put('/examsubmit', async (req, res, next) => {
+   
+  try {
+   const {userAnswers , testId , totalQuestions,correctAnswers , totalMarks ,obtainedMark ,passStatus ,testName ,name ,submitterId } = req.body;
+    
+      let addexamData = await userService.inserExamtData({userAnswers , testId , totalQuestions,correctAnswers , totalMarks ,obtainedMark ,passStatus ,testName ,name ,submitterId});
+      
+
+      if (addexamData)
+          res.json({ 'message': "Successfully added Exam data" });
+  } catch (error) {
+      next(error);
+  }
+});
+
+
 module.exports = router;
